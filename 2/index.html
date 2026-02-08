@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>practice 2</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<main class="container">
+    <h1>Contact Form</h1>
+    <p class="hint">Add your information</p>
+    <form id="contactForm" novalidate>
+      <div class="field">
+        <label for="name">Name: </label>
+        <input id="name" name="name" type="text" placeholder="Ex: Hung" />
+        <div class="error" id="nameError"></div>
+      </div>
+      <div class="field">
+        <label for="email">Email: </label>
+        <input id="email" name="email" type="text" placeholder="ex: joe@gmail.com" />
+        <div class="error" id="emailError"></div>
+      </div>
+      <div class="field">
+        <label for="phone">Phone numbers: </label>
+        <input id="phone" name="phone" type="text" placeholder="9–11 numbers" />
+        <div class="error" id="phoneError"></div>
+      </div>
+</body>
