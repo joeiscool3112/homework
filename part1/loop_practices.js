@@ -25,6 +25,7 @@ function countEven(arr) {
     for (let x of arr) {
         if (x % 2 === 0) {
             count++;
+            // count += 1;
         }
     }
     return count;
@@ -46,6 +47,11 @@ function printArrayWhile(arr) {
 printArrayWhile([1, 2, 3]);
 
 
+// let, var, const
+// scope ??
+var test1 = 0
+test1 = 5;
+console.log(test1);
 
 
 function sumArrayWhile(arr) {
