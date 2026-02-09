@@ -63,14 +63,16 @@ function validate() {
   return { isValid, data: { name, email, phone, message } };
 }
 
-form.addEventListener("submit", (e) => {
+function onSubmitForm(e) {
   e.preventDefault();
 
   const result = validate();
   if (result.isValid) {
     console.log(result.data);
   }
-});
+}
+
+form.addEventListener("submit", onSubmitForm);
 
 [nameInput, emailInput, phoneInput, messageInput].forEach((input) => {
   input.addEventListener("input", () => {

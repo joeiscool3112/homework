@@ -127,13 +127,16 @@ function filterGreaterThan(arr, x) {
     }
     return result;
 }
-console.log(filterGreaterThan([1, 5, 2, 9], 4));
+console.log(filterGreaterThan([1, 5, 2, 9, "u"], 4));
 
 /*
 11) Tìm số xuất hiện nhiều nhất
 Nếu có nhiều số cùng tần suất, lấy số xuất hiện trước
 */
 function mostFrequent(arr) {
+    /*
+    object
+    */
     let maxCount = 0;
     let result = arr[0];
     for (let i = 0; i < arr.length; i++) {
@@ -144,6 +147,28 @@ function mostFrequent(arr) {
         if (count > maxCount) {
             maxCount = count;
             result = arr[i];
+        }
+    }
+    return result;
+}
+console.log(mostFrequent([1, 2, 2, 3, 3, 3]));
+
+//===================
+function mostFrequent(arr) {
+    let count = {};
+    let maxCount = 0;
+    let result = arr[0];
+
+    for (let i = 0; i < arr.length; i++) {
+        let value = arr[i];
+        if (count[value] === undefined) {
+            count[value] = 1;
+        } else {
+            count[value]++;
+        }
+        if (count[value] > maxCount) {
+            maxCount = count[value];
+            result = value;
         }
     }
     return result;
@@ -170,6 +195,11 @@ function countPrime(arr) {
     return total;
 }
 console.log(countPrime([2, 3, 4, 5, 9]));
+//===========
+    
+
+
+
 
 /*
 13) Đảo chuỗi
@@ -183,6 +213,9 @@ function reverseString(s) {
     return newStr;
 }
 console.log(reverseString("hello"));
+
+test(reverseString("hello"), "olleh")
+test(reverseString(1), 1)
 
 /*
 14) Đếm số nguyên âm trong chuỗi
