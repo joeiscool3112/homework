@@ -1,0 +1,86 @@
+:root {
+  --border: #e5e7eb;
+  --border-2: #d1d5db;
+  --muted: #6b7280;
+  --err-bg: #fef2f2;
+  --err-bd: #fecaca;
+  --err-tx: #991b1b;
+  --ok-bg: #eff6ff;
+  --ok-bd: #bfdbfe;
+  --ok-tx: #1e3a8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #111827;
+}
+
+.container {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.title {
+  margin: 0 0 16px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 160px 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-2);
+  font-size: 14px;
+}
+
+button { cursor: pointer; }
+
+.btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btns button { flex: 1; }
+
+.msg {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.msg.error {
+  background: var(--err-bg);
+  border-color: var(--err-bd);
+  color: var(--err-tx);
+}
+
+.msg.ok {
+  background: var(--ok-bg);
+  border-color: var(--ok-bd);
+  color: var(--ok-tx);
+}
