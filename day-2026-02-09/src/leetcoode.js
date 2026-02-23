@@ -9,7 +9,7 @@ function twoSum(nums, target) {
   if (!Array.isArray(nums)) throw new TypeError("nums must be an array");
   if (typeof target !== "number" || !Number.isFinite(target)) throw new TypeError("target must be a finite number");
 
-  const seen = new Map(); // value -> index
+  const seen = new Map(); 
   for (let i = 0; i < nums.length; i++) {
     const n = nums[i];
     if (typeof n !== "number" || !Number.isFinite(n)) {
@@ -24,7 +24,7 @@ function twoSum(nums, target) {
     seen.set(n, i);
   }
 
-  return []; // nếu đề bài đảm bảo có đáp án thì dòng này không dùng tới
+  return []; 
 }
 
 // Contains Duplicate
@@ -39,10 +39,3 @@ function containsDuplicate(nums) {
   return false;
 }
 
-if (typeof require !== "undefined" && require.main === module) {
-  console.log("twoSum([2,7,11,15], 9) =>", twoSum([2, 7, 11, 15], 9));
-  console.log("containsDuplicate([1,2,3,1]) =>", containsDuplicate([1, 2, 3, 1]));
-  console.log("containsDuplicate([1,2,3,4]) =>", containsDuplicate([1, 2, 3, 4]));
-}
-
-module.exports = { twoSum, containsDuplicate };
