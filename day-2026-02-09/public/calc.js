@@ -54,7 +54,7 @@ form.addEventListener("submit", (e) => {
   }
 
   if (op === "/" && pb.num === 0) {
-    showMessage("can divide 0", "error");
+    showMessage("can't divide 0", "error");
     return;
   }
 
