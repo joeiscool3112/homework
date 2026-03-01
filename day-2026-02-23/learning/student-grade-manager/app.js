@@ -13,7 +13,6 @@ const highestStudentEl = document.getElementById("highestStudent");
 
 let students = [];
 
-
 function normalizeName(str) { 
   return str.trim().replace(/\s+/g, " ");
 }
@@ -50,15 +49,13 @@ function renderTable() {
   }
   else {
 
-  // map: biến mỗi student thành 1 <tr>
-  // index (i) dùng làm "data-index" để biết bấm delete dòng nào
   studentTable.innerHTML = students
     .map((s, i) => {
       return `
         <tr>
-          <td>${students.name}</td>
-          <td>${students.age}</td>
-          <td>${students.grade}</td>
+          <td>${s.name}</td>
+          <td>${s.age}</td>
+          <td>${s.grade}</td>
           <td class="actions-col">
             <button data-action="delete" data-index="${i}" class="btn btn-primary">
               Delete
