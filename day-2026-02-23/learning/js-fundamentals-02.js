@@ -14,7 +14,6 @@ console.log(a, b); // Output: 20 10
 //         "Overweight" (25-29.9), "Obese" (>=30)
 function calculateBMI(weight, height) {
   // Your code
-  function calculateBMI(weight, height) {
   const bmi = weight / (height * height);
   if (bmi < 18.5) {
     return "Underweight";
@@ -28,15 +27,16 @@ function calculateBMI(weight, height) {
   else {
     return "Obese";
   }
+
 }
-}
+console.log(calculateBMI(175, 60))
 
 // Bài 3: Tính tiền tip
 // Hóa đơn < 500k → tip 20%
 // Hóa đơn >= 500k → tip 15%
 function calculateTip(bill) {
   // Return total = bill + tip
-  function calculateTip(bill) {
+
   let tip;
 
   if (bill < 500000) {
@@ -47,28 +47,27 @@ function calculateTip(bill) {
 const total = bill + tip;
   return total;
 }
-}
+console.log(calculateTip(400))
 
 // Bài 4: FizzBuzz (1-100)
 // Nếu chia hết 3 → "Fizz"
 // Nếu chia hết 5 → "Buzz"
 // Nếu chia hết cả 3 và 5 → "FizzBuzz"
 // Còn lại → in số đó
-function fizzBuzz() {
+function fizzBuzz(i) {
   // Your code
-    for (let i = 1; i <= 100; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      console.log("FizzBuzz");
-    } else if (i % 3 === 0) {
+       if (i % 3 === 0 && i % 5 != 0) {
       console.log("Fizz");
-    } else if (i % 5 === 0) {
-      console.log("Buzz");
-    } else {
+    } else if (i % 3 != 0 && i % 5 === 0) {
+      console.log("Buzz"); }
+      else if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } 
+    else if (i % 3 != 0 && i % 5 != 0) {
       console.log(i);
     }
   }
-}
-
+console.log(fizzBuzz(35))
 // Bài 5: Kiểm tra năm nhuận
 // Leap year if: (chia hết 4 AND không chia hết 100) OR chia hết 400
 function isLeapYear(year) {
@@ -79,6 +78,7 @@ function isLeapYear(year) {
     return false;
   }
 }
+console.log(isLeapYear(2000))
 
 // Bài 6: Tìm số ngày trong tháng
 // Input: month (1-12), year
@@ -99,6 +99,7 @@ function getDaysInMonth(month, year) {
 
   return 31;
 }
+console.log(getDaysInMonth(12, 2000))
 
 // Bài 7: In tam giác sao
 // Input: n = 5
@@ -114,7 +115,7 @@ function printTriangle(n) {
     console.log("*".repeat(i));
   }
 }
-
+console.log(printTriangle(5))
 // Bài 8: In tam giác số
 // Input: n = 4
 // Output:
@@ -132,7 +133,7 @@ function printNumberTriangle(n) {
     console.log(line);
   }
 }
-console.log(printNumberTriangle(4))
+console.log(printNumberTriangle(4));
 
 // Bài 9: Tính giai thừa (factorial)
 // 5! = 5 × 4 × 3 × 2 × 1 = 120
@@ -146,6 +147,7 @@ function factorial(n) {
 
   return result;
 }
+console.log(factorial(5));
 
 // Bài 10: Kiểm tra số nguyên tố
 function isPrime(num) {
@@ -160,7 +162,7 @@ function isPrime(num) {
 
   return true;
 }
-
+console.log(isPrime(24));
 // Bài 11: Tìm tất cả số nguyên tố từ 1 đến n
 function findPrimes(n) {
   // Return array of primes
@@ -174,7 +176,7 @@ function findPrimes(n) {
 
   return primes;
 }
-
+console.log(findPrimes(25));
 // Bài 12: Currency Converter
 // rates = { USD: 1, VND: 24000, EUR: 0.92, JPY: 148 }
 // convertCurrency(100, 'USD', 'VND', rates) → 2400000
@@ -191,4 +193,4 @@ const rates = {
   EUR: 0.92,
   JPY: 148
 };
-console.log(convertCurrency(100, 'USD', 'VND', rates))
+console.log(convertCurrency(100, 'USD', 'VND', rates));
