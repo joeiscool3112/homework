@@ -1,1 +1,1 @@
-calculateTotal
+    .map(products => products.name);
