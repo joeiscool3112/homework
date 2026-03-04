@@ -141,7 +141,12 @@ console.log("2: ", findTopStudent(classData));
 function countExcellentStudents(classData) {
   // Your code
   const temp_class_data = addAverageScores(classData);
-  return temp_class_data.filter(student => student.average >= 8).map(student => student.name);
+  let sum = 0;
+  for (let student of temp_class_data) {
+    if (student.average >= 8 )
+      sum += 1;
+  }
+  return sum;
 }
 console.log("3: ", countExcellentStudents(classData));
 
