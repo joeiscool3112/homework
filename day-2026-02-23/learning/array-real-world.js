@@ -101,3 +101,72 @@ function searchProducts(products, searchTerm) {
  }
 }
 console.log("10: ", searchProducts(products, "Chair"));
+
+
+
+//Scenario 2: Student Performance Analytics
+const classData = [
+  { id: 1, name: 'Nguyen Van A', math: 8, physics: 7, english: 9 },
+  { id: 2, name: 'Tran Thi B', math: 6, physics: 8, english: 7 },
+  { id: 3, name: 'Le Van C', math: 9, physics: 9, english: 8 },
+  { id: 4, name: 'Pham Thi D', math: 4, physics: 6, english: 6 },
+  { id: 5, name: 'Hoang Van E', math: 10, physics: 9, english: 10 }
+];
+// 1. Tính điểm trung bình mỗi học sinh (add property "average")
+function addAverageScores(classData) {
+  // Return new array with average property
+  return classData.map(student => {
+    const average = ((student.math + student.physics + student.english) / 3).toFixed(2);
+    return { ...student, average };
+  });
+}
+
+console.log("1: ", addAverageScores(classData));
+// 2. Find top performer (highest average)
+function findTopStudent(classData) {
+  // Your code
+  const temp_class_data = addAverageScores(classData);
+  return temp_class_data.reduce((max, student) => {
+    if (student.average > max.average) {
+        return student;
+    }
+        return max;
+  }
+)
+.name;
+}
+console.log("2: ", findTopStudent(classData));
+
+// 3. Count students có average >= 8.0 (Giỏi)
+function countExcellentStudents(classData) {
+  // Your code
+  const temp_class_data = addAverageScores(classData);
+  return temp_class_data.filter(student => student.average >= 8).map(student => student.name);
+}
+console.log("3: ", countExcellentStudents(classData));
+
+// 4. Tính điểm trung bình của cả lớp cho từng môn
+function getSubjectAverages(classData) {
+  // Return: { math: 7.6, physics: 7.8, english: 8 }
+  let sum_math = 0;
+  let sum_physics = 0;
+  let sum_english = 0;
+  for (let student of classData) {
+    sum_math += student.math;
+    sum_physics += student.physics;
+    sum_english += student.english;
+  }
+  return {
+    math: sum_math / classData.length,
+    physics: sum_physics / classData.length,
+    english: sum_english / classData.length
+  }
+}
+console.log("4: ", getSubjectAverages(classData));
+// 5. Find students failing any subject (< 5)
+function findFailingStudents(classData) {
+  // Your code
+  return classData.filter(student => student.math < 5 || student.physics < 5 || student.english < 5)
+  .map(student => student.name);
+}
+console.log("5: ", findFailingStudents(classData));
