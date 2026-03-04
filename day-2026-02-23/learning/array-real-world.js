@@ -116,7 +116,7 @@ const classData = [
 function addAverageScores(classData) {
   // Return new array with average property
   return classData.map(student => {
-    const average = ((student.math + student.physics + student.english) / 3).toFixed(2);
+    const average = Number(((student.math + student.physics + student.english) / 3).toFixed(2));
     return { ...student, average };
   });
 }

@@ -96,12 +96,12 @@ body {
   font-weight: bold;
 }
 
-#btnTempCalc, #btnUnitCalc {
+#btnTempCalc, #btnUnitCalc, #btnWeightCalc, #btnTimeCalc {
   background: #4CAF50;
   color: white;
 }
 
-#btnTempReset, #btnUnitReset {
+#btnTempReset, #btnUnitReset, #btnWeightReset, #btnTimeReset {
   background: #e74c3c;
   color: white;
 }

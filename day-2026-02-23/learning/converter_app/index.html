@@ -9,7 +9,7 @@
 
   <h1 class="title">Converter App</h1>
 
-  <div class="tabs">
+  <div class="tabs" data-scope="main">
     <button class="tab active" data-tab="temp">Temperature</button>
     <button class="tab" data-tab="unit">Unit Calculator</button>
   </div>
@@ -99,15 +99,75 @@
 
   <div class="tab-panel" data-scope="unit" data-panel="weight">
     <h3 class="subtitle">Weight</h3>
-    <form id="weightForm" novalidate>
-      <!-- weight form -->
+        <form id="weightForm" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="weightValue">Type your number in:</label>
+          <input id="weightValue" name="weightValue" type="number" inputmode="decimal" placeholder="Type in" />
+        </div>
+
+        <div class="field">
+          <label for="weightFrom">Input unit:</label>
+          <select id="weightFrom" name="weightFrom">
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="lb">lb</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="weightTo">Output unit:</label>
+          <select id="weightTo" name="weightTo">
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="lb">lb</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" id="btnWeightCalc">Calculate</button>
+        <button type="button" id="btnWeightReset">Reset</button>
+      </div>
+
+      <div id="weightOutput" class="msg" hidden></div>
     </form>
   </div>
 
   <div class="tab-panel" data-scope="unit" data-panel="time">
     <h3 class="subtitle">Time</h3>
-    <form id="timeForm" novalidate>
-      <!-- time form -->
+        <form id="timeForm" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="timeValue">Type your number in:</label>
+          <input id="timeValue" name="timeValue" type="number" inputmode="decimal" placeholder="Type in" />
+        </div>
+
+        <div class="field">
+          <label for="timeFrom">Input unit:</label>
+          <select id="timeFrom" name="timeFrom">
+            <option value="s">s</option>
+            <option value="min">min</option>
+            <option value="h">h</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="timeTo">Output unit:</label>
+          <select id="timeTo" name="timeTo">
+            <option value="s">s</option>
+            <option value="min">min</option>
+            <option value="h">h</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" id="btnTimeCalc">Calculate</button>
+        <button type="button" id="btnTimeReset">Reset</button>
+      </div>
+
+      <div id="timeOutput" class="msg" hidden></div>
     </form>
   </div>
   </section>
