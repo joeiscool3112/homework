@@ -6,3 +6,7 @@ trong ngày
 việc về nhà 
 + làm btvn
 + hoàn thiện nốt bài củng cố kiến thức js
+------
+4/3/2026
+hoàn thiện bài array real world, sửa các lỗi nhầm về object, array với nhau
+hoàn thiện converterapp, chưa biết chuyển tab, giữa cách calc, cần nghiên cứu thêm

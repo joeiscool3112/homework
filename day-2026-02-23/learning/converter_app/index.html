@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Converter app</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1 class="title">Converter App</h1>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="temp">Temperature</button>
+    <button class="tab" data-tab="unit">Unit Calculator</button>
+  </div>
+
+  <section class="converter tab-panel active" data-scope="main" data-panel="temp" id="tab-temp">
+    <h2 class="subtitle">Temperature Converter</h2>
+    <form id="tempForm" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="tempValue">Type your number in:</label>
+          <input id="tempValue" name="tempValue" type="number" inputmode="decimal" placeholder="Type in" />
+        </div>
+
+        <div class="field">
+          <label for="tempFrom">Input degree:</label>
+          <select id="tempFrom" name="tempFrom">
+            <option value="C">C</option>
+            <option value="F">F</option>
+            <option value="K">K</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="tempTo">Output degree:</label>
+          <select id="tempTo" name="tempTo">
+            <option value="C">C</option>
+            <option value="F">F</option>
+            <option value="K">K</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" id="btnTempCalc">Calculate</button>
+        <button type="button" id="btnTempReset">Reset</button>
+      </div>
+
+      <div id="tempOutput" class="msg" hidden></div>
+    </form>
+  </section>
+<!-- unitcalc  -->
+  <section class="converter tab-panel" data-scope="main" data-panel="unit" id="tab-unit">
+    <h2 class="subtitle">Unit Calculator</h2>
+  <div class="tabs tabs-sub" data-scope="unit">
+    <button class="tab active" data-tab="length">Length</button>
+    <button class="tab" data-tab="weight">Weight</button>
+    <button class="tab" data-tab="time">Time</button>
+  </div>
+  <!-- Panels level 2 -->
+  <div class="tab-panel active" data-scope="unit" data-panel="length">
+    <h3 class="subtitle">Length</h3>
+    <!-- length form -->
+     <form id="unitForm" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="unitValue">Type your number in:</label>
+          <input id="unitValue" name="unitValue" type="number" inputmode="decimal" placeholder="Type in" />
+        </div>
+
+        <div class="field">
+          <label for="unitFrom">Input unit:</label>
+          <select id="unitFrom" name="unitFrom">
+            <option value="m">m</option>
+            <option value="cm">cm</option>
+            <option value="km">km</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="unitTo">Output unit:</label>
+          <select id="unitTo" name="unitTo">
+            <option value="m">m</option>
+            <option value="cm">cm</option>
+            <option value="km">km</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" id="btnUnitCalc">Calculate</button>
+        <button type="button" id="btnUnitReset">Reset</button>
+      </div>
+
+      <div id="unitOutput" class="msg" hidden></div>
+    </form>
+  </div>
+
+  <div class="tab-panel" data-scope="unit" data-panel="weight">
+    <h3 class="subtitle">Weight</h3>
+    <form id="weightForm" novalidate>
+      <!-- weight form -->
+    </form>
+  </div>
+
+  <div class="tab-panel" data-scope="unit" data-panel="time">
+    <h3 class="subtitle">Time</h3>
+    <form id="timeForm" novalidate>
+      <!-- time form -->
+    </form>
+  </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
