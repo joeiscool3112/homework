@@ -1,7 +1,7 @@
 // Bug 1: Hàm này không tính đúng sum
 function calculateSum(numbers) {
   let sum = 0;
-  for (let i = 1; i <= numbers.length; i++) {
+  for (let i = 0; i <= numbers.length; i++) {
     sum += numbers[i];
   }
   return sum;
@@ -9,11 +9,14 @@ function calculateSum(numbers) {
 
 // Bug 2: Hàm này không filter đúng
 function getEvenNumbers(arr) {
-  return arr.filter(num => num % 2 === 1);
+  return arr.filter(num => num % 2 === 0);
 }
 
 // Bug 3: Check palindrome không chính xác
 function isPalindrome(str) {
+  let cleaned = str
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
   return str === str.split('').reverse().join('');
 }
 // Test case fail: isPalindrome("A man a plan a canal Panama")
@@ -21,7 +24,7 @@ function isPalindrome(str) {
 
 // Bug 4: Find max không đúng
 function findMax(numbers) {
-  let max = 0;
+  let max = numbers[0];
   for (let num of numbers) {
     if (num > max) {
       max = num;
@@ -33,6 +36,7 @@ function findMax(numbers) {
 
 // Bug 5: Average calculation sai
 function calculateAverage(scores) {
+  if (scores.length === 0) return 0;
   let total = 0;
   for (let score of scores) {
     total += score;
@@ -43,8 +47,12 @@ function calculateAverage(scores) {
 
 // Bug 6: Capitalize first letter không work
 function capitalizeWords(sentence) {
-  return sentence.split(' ').map(word => {
-    return word[0].toUpperCase() + word.slice(1);
-  }).join(' ');
+  return sentence
+    .trim()
+    .split(/\s+/)
+    .map(word =>
+      word[0].toUpperCase() + word.slice(1)
+    )
+    .join(' ');;
 }
 // Test case fail: capitalizeWords("  hello  world  ")

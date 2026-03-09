@@ -140,7 +140,14 @@ console.log("8: ", moveZeros([0,1,0,3,12]));
 // Giải thích: rotate right 3 positions
 function rotateArray(arr, k) {
   // HINT: slice() và concat()
+  k = k % arr.length;
+
+  const part1 = arr.slice(-k);
+  const part2 = arr.slice(0, arr.length - k);
+
+  return part1.concat(part2);
 }
+console.log("9:", rotateArray([1,2,3,4,5,6,7], 3));
 
 // 10. Product of Array Except Self
 // Input: [1,2,3,4]
@@ -149,4 +156,21 @@ function rotateArray(arr, k) {
 // KHÔNG dùng division operator
 function productExceptSelf(arr) {
   // HINT: Left products × Right products
+    const n = arr.length;
+  const result = new Array(n).fill(1);
+
+  let left = 1;
+  for (let i = 0; i < n; i++) {
+    result[i] = left;
+    left *= arr[i];
+  }
+
+  let right = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    result[i] *= right;
+    right *= arr[i];
+  }
+
+  return result;
 }
+console.log("10:", productExceptSelf([1,2,3,4]));
