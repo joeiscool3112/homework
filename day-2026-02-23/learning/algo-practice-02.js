@@ -16,7 +16,7 @@ function countVowels(str) {
   // Your code
   let temp = [];
   let sum = 0;
-  temp = str.split("");
+  temp = str.toLowerCase().split("");
   for (let letter of temp) {
     if (letter === "a" || letter === "e" || letter === "i" || letter === "o" || letter === "u") {
       sum += 1;
@@ -24,7 +24,7 @@ function countVowels(str) {
   }
   return sum;
 }
-console.log("2: ", countVowels("Javascript"))
+console.log("2: ", countVowels("JAvascript"))
 
 // 3. Find Longest Word
 // Input: "The quick brown fox"
@@ -70,16 +70,10 @@ console.log("4: cach 1", removeDuplicates1([1, 2, 2, 3, 4, 4, 5]), "cach 2: ", r
 // HINT: Tổng 1→n = n(n+1)/2
 function findMissingNumber(arr) {
   // Your code
-  let Result = [];
-  let max = Math.max(...arr);
-  for ( let i = 1; i <= max; i++) {
-    if (arr.includes(i)) {
-    }
-    else {
-    Result.push(i);
-    }
-  }
-  return Result;
+  let n = Math.max(...arr);
+  let expectedSum = n * (n + 1) / 2;
+  let actualSum = arr.reduce((sum, num) => sum + num, 0);
+  return expectedSum - actualSum;
 }
 console.log("5: ",findMissingNumber([1,2,3,4,6,7,8,10]));
 // 6. Group Anagrams
