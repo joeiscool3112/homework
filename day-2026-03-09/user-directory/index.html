@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Directory App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>User Directory</h1>
+      <p>Search users and view their details</p>
+    </header>
+
+    <main>
+      <section id="listView">
+        <div class="toolbar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search users by name..."
+          />
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div id="loading" class="loading hidden">
+          <div class="spinner"></div>
+          <p>Loading users...</p>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="userGrid" class="user-grid"></div>
+      </section>
+
+      <section id="detailView" class="detail-view hidden">
+        <button id="backBtn" class="back-btn">← Back to list</button>
+
+        <div id="detailLoading" class="loading hidden">
+          <div class="spinner"></div>
+          <p>Loading detail...</p>
+        </div>
+
+        <div id="detailError" class="error-box hidden"></div>
+
+        <div id="userDetail" class="detail-card"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
