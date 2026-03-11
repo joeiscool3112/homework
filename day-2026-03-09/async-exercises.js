@@ -205,7 +205,7 @@ async function loadDashboard(userId) {
     console.log(`User: ${profile.name}`)
     let todoleft = 0;
     todo.forEach(item => {
-      if (item.done = true) {
+      if (!item.done) {
         todoleft++;
       }
       return todoleft;
@@ -216,7 +216,7 @@ async function loadDashboard(userId) {
 
     let notileft = 0;
     notifications.forEach(item => {
-      if (item.done = true) {
+      if (!item.done) {
         notileft++;
       }
       return notileft;
