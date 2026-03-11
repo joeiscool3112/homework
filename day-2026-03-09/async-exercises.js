@@ -141,11 +141,11 @@ async function fetchWithTimeout(promise, timeoutMs) {
 
 async function exercise5() {
   try {
-  const user = await fetchWithTimeout(fetchUser(1), 200);
-  console.log(user);
-} catch (error) {
-  console.log("5: Timeout:", error.message);
-}
+    const user = await fetchWithTimeout(fetchUser(1), 200);
+    console.log(user);
+  } catch (error) {
+    console.log("5: Timeout:", error.message);
+  }
 }
 
 
@@ -161,7 +161,7 @@ async function retry(fn, maxAttempts = 3) {
     try {
       const result = await fn();
       return result;
-        } 
+    }
     catch (error) {
       i++;
       console.log("retrying...");
@@ -195,34 +195,45 @@ async function loadDashboard(userId) {
   console.log("Loading Dashboard...");
   try {
     const parStart = Date.now();
-  const [profile, todo, notifications] = await Promise.all([
-    fetchUser(userId),
-    fetchTodos(userId),
-    fetchNotifications(userId)
-  ]);
-  const parTime = Date.now() - parStart;
-  console.log(`Dashboard loaded in ${parTime}ms`);
-  console.log(`User: ${profile.name}`)
-  if (todo.done === true) {
-    console.log(`Pending todo: 1`);
+    const [profile, todo, notifications] = await Promise.all([
+      fetchUser(userId),
+      fetchTodos(userId),
+      fetchNotifications(userId)
+    ]);
+    const parTime = Date.now() - parStart;
+    console.log(`Dashboard loaded in ${parTime}ms`);
+    console.log(`User: ${profile.name}`)
+    let todoleft = 0;
+    todo.forEach(item => {
+      if (item.done = true) {
+        todoleft++;
+      }
+      return todoleft;
+    }
+    );
+    console.log(`Pending todos: ${todoleft}`);
+
+
+    let notileft = 0;
+    notifications.forEach(item => {
+      if (item.done = true) {
+        notileft++;
+      }
+      return notileft;
+    }
+    );
+    console.log(`Pending notifications: ${notileft}`);
   }
-  else {
-    console.log(`Pending todo: None`);
+  catch (error) {
+    console.log(error);
   }
-  if (notifications.message in notifications) {
-    console.log("Notifications: 1");
-  }
-  else {
-    console.log("Notifications: None");
-  }
-  } catch (error) {
-    console.log(`Failed to load dashboard, ${error}`);
-  }
-}
+};
+
+
 
 async function exercise7() {
   console.log("7: ");
-  loadDashboard(2);
+  loadDashboard(1);
 }
 
 //Run hw
