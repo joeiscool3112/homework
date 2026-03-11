@@ -37,6 +37,10 @@ async function unreliableFetch(url) {
   return { url, data: 'Success!' };
 }
 
+async function failedFetch(url) {
+  throw new Error(`Failed to fetch: ${url}`);
+}
+
 
 // Bài 1: Basic async/await
 // Fetch user id=1, then fetch their todos → console.log cả 2
@@ -45,25 +49,25 @@ async function exercise1() {
     const user = await fetchUser(1);
     const todos = await fetchTodos(user.id);
 
-    console.log("Bài 1 - user:", user);
-    console.log("Bài 1 - todos:", todos);
+    console.log("1: user:", user);
+    console.log("1: todos:", todos);
   } catch (error) {
-    console.log("Bài 1 error:", error.message);
+    console.log("1: error:", error.message);
   }
 }
-exercise1()
+
 // Bài 2: Error handling
 // Fetch user id=999 (sẽ throw error) → catch và in error message
 // KHÔNG được để unhandled promise rejection
 async function exercise2() {
   try {
     const user = await fetchUser(999);
-    console.log("Bài 2 - user:", user);
+    console.log("2: user:", user);
   } catch (error) {
-    console.log("Bài 2 error:", error.message);
+    console.log("2: error:", error.message);
   }
 }
-exercise2()
+
 
 // Bài 3: Sequential vs Parallel
 // a) Sequential: Fetch user 1, rồi user 2, rồi user 3 → đo thời gian
@@ -78,7 +82,7 @@ async function exercise3() {
 
   const seqTime = Date.now() - seqStart;
 
-  console.log("Bài 3 - sequential users:", user1, user2, user3);
+  console.log("3: sequential users:", user1, user2, user3);
 
   const parStart = Date.now();
 
@@ -90,10 +94,10 @@ async function exercise3() {
 
   const parTime = Date.now() - parStart;
 
-  console.log("Bài 3 - parallel users:", pUser1, pUser2, pUser3);
+  console.log("3: parrallel:", pUser1, pUser2, pUser3);
   console.log(`Sequential: ${seqTime}ms, Parallel: ${parTime}ms`);
 }
-exercise3();
+
 
 // Bài 4: Promise.all với error handling
 // Fetch users [1, 2, 999, 3] cùng lúc
@@ -116,16 +120,33 @@ async function exercise4() {
     .filter((item) => item.status === "rejected")
     .map((item) => item.reason.message);
 
-  console.log("Bài 4 - fulfilled users:", fulfilledUsers);
-  console.log("Bài 4 - rejected reasons:", rejectedReasons);
+  console.log("4: fulfilled users:", fulfilledUsers);
+  console.log("4: rejected reasons:", rejectedReasons);
 }
-exercise4();
 
 // Bài 5: Timeout pattern
 // Viết function fetchWithTimeout(promise, timeoutMs)
 // Nếu promise resolve trước timeout → return kết quả
 // Nếu timeout trước → throw 'Request timed out'
 // HINT: Promise.race([promise, timeoutPromise])
+async function fetchWithTimeout(promise, timeoutMs) {
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => {
+      reject(new Error("Request timed out"));
+    }, timeoutMs);
+  });
+
+  return Promise.race([promise, timeoutPromise]);
+}
+
+async function exercise5() {
+  try {
+  const user = await fetchWithTimeout(fetchUser(1), 200);
+  console.log(user);
+} catch (error) {
+  console.log("5: Timeout:", error.message);
+}
+}
 
 
 // Bài 6: Retry logic
@@ -135,8 +156,32 @@ exercise4();
 // Test với: retry(() => unreliableFetch('/api/data'), 5)
 async function retry(fn, maxAttempts = 3) {
   // Your code
-}
+  let i = 0;
+  while (i < maxAttempts) {
+    try {
+      const result = await fn();
+      return result;
+        } 
+    catch (error) {
+      i++;
+      console.log("retrying...");
+      if (i === maxAttempts) {
+        throw error;
+      }
 
+      await delay(500);
+    }
+  }
+}
+async function exercise6() {
+  console.log("6: ");
+  try {
+    const result = await retry(() => failedFetch('/api/data'), 5);
+    console.log("success:", result);
+  } catch (error) {
+    console.log("error:", error.message);
+  }
+}
 // Bài 7: Loading Dashboard
 // Giả lập load dashboard: fetch 3 data sources song song
 // → user profile, todos, notifications
@@ -147,5 +192,49 @@ async function retry(fn, maxAttempts = 3) {
 // → In: "Notifications: 2"
 async function loadDashboard(userId) {
   // Your code
+  console.log("Loading Dashboard...");
+  try {
+    const parStart = Date.now();
+  const [profile, todo, notifications] = await Promise.all([
+    fetchUser(userId),
+    fetchTodos(userId),
+    fetchNotifications(userId)
+  ]);
+  const parTime = Date.now() - parStart;
+  console.log(`Dashboard loaded in ${parTime}ms`);
+  console.log(`User: ${profile.name}`)
+  if (todo.done === true) {
+    console.log(`Pending todo: 1`);
+  }
+  else {
+    console.log(`Pending todo: None`);
+  }
+  if (notifications.message in notifications) {
+    console.log("Notifications: 1");
+  }
+  else {
+    console.log("Notifications: None");
+  }
+  } catch (error) {
+    console.log(`Failed to load dashboard, ${error}`);
+  }
 }
 
+async function exercise7() {
+  console.log("7: ");
+  loadDashboard(2);
+}
+
+//Run hw
+
+async function runExercises() {
+  await exercise1();
+  await exercise2();
+  await exercise3();
+  await exercise4();
+  await exercise5();
+  await exercise6();
+  await exercise7();
+}
+
+runExercises();
