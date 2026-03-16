@@ -43,12 +43,13 @@ console.log(firstHobby);
 
 // Bài 5: Destructure function parameters
 // Viết function nhận object và in: "Joe scored 85 in math"
-function printScore(/* destructure here */) {
-  // Your code
-  const {name, scores: {math}} = student;
+function printScore({ name, scores: { math } }) {
   console.log(`5: ${name} scored ${math} in math`);
 }
-printScore()
+printScore({
+  name: "Joe",
+  scores: { math: 85 }
+});
 // Bài 6: Array destructuring swap
 let x = 10, y = 20;
 // Swap x và y dùng destructuring (1 dòng)
@@ -63,7 +64,7 @@ const arr1 = [1, 2, 3, 4];
 const arr2 = [3, 4, 5, 6];
 // Output: [1, 2, 3, 4, 5, 6]
 // HINT: dùng spread + Set
-const arr3 = new Set([...arr1, ...arr2]);
+const arr3 = [...new Set([...arr1, ...arr2])];
 console.log("7: ", arr3);
 // Bài 8: Clone object và override 1 property
 const config = { theme: 'dark', lang: 'vi', fontSize: 14 };
