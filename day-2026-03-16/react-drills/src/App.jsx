@@ -18,8 +18,8 @@ function Greeting({ name = 'World' }) {
 // Render card với thông tin user
 // role === 'admin' → border đỏ, role === 'user' → border xanh
 
-function ProfileCard({name, email, avatar, role}) {
-   return (
+function ProfileCard({ name, email, avatar, role }) {
+  return (
     <div
       style={{
         border: role === 'admin' ? '2px solid red' : '2px solid blue',
@@ -29,7 +29,7 @@ function ProfileCard({name, email, avatar, role}) {
         margin: '0 auto',
         padding: '10px',
         marginBottom: '20px',
-          }}
+      }}
     >
       <img
         src={avatar}
@@ -54,37 +54,40 @@ const products = [
 // a) Render danh sách products dạng cards
 // b) Sản phẩm hết hàng → hiện badge "Sold Out" + opacity 0.5
 // c) Tính tổng giá trị sản phẩm còn hàng → hiển thị ở footer
-function Renderproduct({products}) {
+function ProductList({ products }) {
+  const formatPrice = (price) => {
+  return new Intl.NumberFormat('vi-VN').format(price);
+};
   const total = products.reduce((sum, item) => {
     return item.inStock ? sum + item.price : sum;
   }, 0);
-  return(
+  return (
     <div>
       {products.map((item) => {
-return (
-  <div key={item.id}
-  style={{
-    border: '1px solid yellow',
-    textAlign: 'center',
-    borderRadius: '10px',
-    maxWidth: '400px',
-    margin: '0 auto',
-    padding: '10px',
-    marginBottom: '20px',
-    opacity: item.inStock ? 1 : 0.5,
-  }}>
-    <h3>{item.name}</h3>
-    <h3>Price: {item.price} VND</h3>
-    <h3>Stock: {item.inStock ? 'Avalaible' : 'Sold out'}</h3>
-  </div>
-);
-})}
-     <footer style={{
-      marginTop: '20px',
-      marginBottom: '20px',
-     }}>
+        return (
+          <div key={item.id}
+            style={{
+              border: '1px solid yellow',
+              textAlign: 'center',
+              borderRadius: '10px',
+              maxWidth: '400px',
+              margin: '0 auto',
+              padding: '10px',
+              marginBottom: '20px',
+              opacity: item.inStock ? 1 : 0.5,
+            }}>
+            <h3>{item.name}</h3>
+            <h3>Price: {formatPrice(item.price)} đ</h3>
+            <h3>Stock: {item.inStock ? 'Avalaible' : 'Sold out'}</h3>
+          </div>
+        );
+      })}
+      <footer style={{
+        marginTop: '20px',
+        marginBottom: '20px',
+      }}>
         Total: {total} VND
-      </footer>  
+      </footer>
     </div>
   )
 }
@@ -96,17 +99,17 @@ return (
 function Counter() {
   const [count, setCount] = useState(0);
   return (
-      <div>
-        <p style={{
-          color: count > 10 ? 'Red' : 'green',
-        }} >Count: {count}</p>
-        <button onClick={() => setCount(count + 1)}>+1</button>
-        <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>
-          -1
-        </button>
-        <button onClick={() => setCount(0)}>Reset</button>
-      </div>
-    );
+    <div>
+      <p style={{
+        color: count > 10 ? 'Red' : 'green',
+      }} >Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>
+        -1
+      </button>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
 }
 
 // --- Bài 5: Toggle Component ---
@@ -125,8 +128,8 @@ function ToggleDetails() {
         margin: '0 auto',
         padding: '10px',
         marginBottom: '20px',
-      }} 
-      onClick={() => setShow(!show)}>
+      }}
+        onClick={() => setShow(!show)}>
         {show ? 'Hide Details' : 'Show Details'}
       </button>
 
@@ -195,12 +198,12 @@ function NameType() {
 function App() {
   return (
     <div>
-      <Greeting name='Joe'/>
-      <Counter/>
-      <ToggleDetails/>
-      <NameType/>
-      <ProfileCard name='Joe' email='email@gmail.com' avatar={heroImg} role='user'/>
-      <Renderproduct products={products}/>
+      <Greeting name='Joe' />
+      <Counter />
+      <ToggleDetails />
+      <NameType />
+      <ProfileCard name='Joe' email='email@gmail.com' avatar={heroImg} role='user' />
+      <ProductList products={products} />
     </div>
   );
 }
