@@ -86,7 +86,7 @@ function ProductList({ products }) {
         marginTop: '20px',
         marginBottom: '20px',
       }}>
-        Total: {total} VND
+        Total: {formatPrice(total)} đ
       </footer>
     </div>
   )
