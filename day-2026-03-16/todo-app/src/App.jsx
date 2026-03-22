@@ -40,9 +40,10 @@ function App() {
     if (filter === 'completed') return todo.done;
     return true;
   });
-
+  console.log(todos)
   return (
     <div>
+        <h1>TODO TRACKER</h1>
       <TodoForm onAddTodo={addTodo} />
 
       <FilterBar currentFilter={filter} onChangeFilter={setFilter} />
@@ -54,6 +55,7 @@ function App() {
         onToggle={toggleTodo}
         onDelete={deleteTodo}
       />
+      <footer>made by joe</footer>
     </div>
   );
 }
