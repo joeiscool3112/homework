@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 16px;
+}
+
+.title {
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.subtitle {
+  margin-bottom: 14px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.tab {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab.active {
+  border-color: #333;
+}
+
+/* Panels */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.converter {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 420px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btns button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#btnTempCalc, #btnUnitCalc, #btnWeightCalc, #btnTimeCalc {
+  background: #4CAF50;
+  color: white;
+}
+
+#btnTempReset, #btnUnitReset, #btnWeightReset, #btnTimeReset {
+  background: #e74c3c;
+  color: white;
+}
+
+.msg {
+  margin-top: 15px;
+  padding: 10px;
+  background: #eef3ff;
+  border-radius: 5px;
+  text-align: center;
+}

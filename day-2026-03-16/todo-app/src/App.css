@@ -1,0 +1,196 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  padding: 20px;
+}
+
+div {
+  /* main container */
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+h1 {
+  background: #6b7280;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Form */
+form {
+  display: flex;
+  padding: 20px;
+  background: #f9fafb;
+  gap: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+button {
+  padding: 12px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Filter bar */
+div > div:nth-child(3) {  /* FilterBar */
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+div > div:nth-child(3) button {
+  flex: 1;
+  padding: 10px;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+div > div:nth-child(3) button:hover {
+  background: #f3f4f6;
+}
+
+div > div:nth-child(3) button[style*="bold"] {
+  background: #667eea !important;
+  color: white !important;
+  border-color: #667eea;
+}
+
+/* TodoList */
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background 0.15s;
+}
+
+li:hover {
+  background: #f8fafc;
+}
+
+li span {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+li button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+li button:nth-child(2) {  /* Toggle */
+  background: #10b981;
+}
+
+li button:nth-child(2):hover {
+  background: #059669;
+}
+
+li button:nth-child(3) {  /* Delete */
+  background: #ef4444;
+}
+
+li button:nth-child(3):hover {
+  background: #dc2626;
+}
+
+/* Stats */
+div > div:nth-child(4) {  /* TodoStats */
+  padding: 16px 20px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+div > div:nth-child(4) p {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+div > div:nth-child(4) button {
+  background: #f87171;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+div > div:nth-child(4) button:hover {
+  background: #ef4444;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 16px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Done items */
+span[style*="line-through"] {
+  color: #9ca3af;
+  opacity: 0.8;
+}
