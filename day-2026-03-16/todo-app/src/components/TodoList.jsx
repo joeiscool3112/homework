@@ -1,17 +1,6 @@
 
 
 function TodoList({ todos, onToggle, onDelete }) {
-      const toggleTodo = (id) => {
-    setTodos(prev =>
-      prev.map(todo =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      )
-    );
-  };
-
-  const deleteTodo = (id) => {
-    setTodos(prev => prev.filter(todo => todo.id !== id));
-  };
   return (
     <ul>
       {todos.map(todo => (
