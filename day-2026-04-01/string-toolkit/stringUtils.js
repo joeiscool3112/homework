@@ -25,3 +25,6 @@ function truncate(str, maxLength) {
     return str.slice(0, maxLength) + '...';
 }
 console.log(truncate("Hello World", 7));
+
+
+module.exports = { capitalize, countWords, isPalindrome, truncate };
